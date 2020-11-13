@@ -1,0 +1,429 @@
+/*
+Theme Name:  Vue.wordpress
+Author:      Brandon Shiluk
+Author URI:  https://github.com/bucky355
+Description: Takes a hybrid approach, using Wordpress to manage and serve initial content. Vue.js takes over all future in-site navigation effectively transforming the site into a SPA.
+Version:     1.0.0
+Text Domain: vue-wordpress
+*/
+
+/* Base Styles
+------------------------------------- */
+/* Fonts */
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-ExtraLight.eot");
+  src: url("./src/assets/fonts/Manrope-ExtraLight.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-ExtraLight.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-ExtraLight.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-SemiBold.eot");
+  src: url("./src/assets/fonts/Manrope-SemiBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-SemiBold.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-SemiBold.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-ExtraBold.eot");
+  src: url("./src/assets/fonts/Manrope-ExtraBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-ExtraBold.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-ExtraBold.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-Light.eot");
+  src: url("./src/assets/fonts/Manrope-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-Light.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-Light.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-Regular.eot");
+  src: url("./src/assets/fonts/Manrope-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-Regular.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-Regular.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-Bold.eot");
+  src: url("./src/assets/fonts/Manrope-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-Bold.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-Bold.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./src/assets/fonts/Manrope-Medium.eot");
+  src: url("./src/assets/fonts/Manrope-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("./src/assets/fonts/Manrope-Medium.woff2") format("woff2"),
+    url("./src/assets/fonts/Manrope-Medium.woff") format("woff"),
+    url("./src/assets/fonts/Manrope-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #444;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 80px;
+  font-weight: 400;
+}
+h2 {
+  font-size: 70px;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 48px;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 38px;
+  font-weight: 500;
+}
+h5 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+h6 {
+  font-style: 24px;
+  font-weight: 500;
+}
+
+/* h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 2rem;
+} */
+
+.footer {
+  background-color: #000;
+  padding: 195px 0 50px 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .footer {
+    padding: 140px 0 25px 0;
+  }
+}
+
+.footerWrapp {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .footerWrapp {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.sidebarLeft {
+  position: relative;
+  bottom: 115px;
+}
+.sidebarCenter {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebarCenter {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarCenter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+#menu-footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  width: 360px;
+  margin: -15px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  #menu-footer-menu {
+    width: 245px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #menu-footer-menu {
+    width: auto;
+  }
+}
+
+#menu-footer-menu li {
+  width: 50%;
+  margin-bottom: 36px;
+}
+
+@media screen and (max-width: 480px) {
+  #menu-footer-menu li {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+}
+
+.sidebarLeft .footerBtn {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #fff;
+  padding: 20px;
+  font-size: 1.125rem;
+  width: 256px;
+  text-align: center;
+  padding: 15px 0;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarLeft .footerBtn {
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+.sidebarLeft h2 {
+  margin: 35px 0 58px 0;
+  font-size: 2.375rem;
+  color: #fff;
+  font-weight: 300;
+  text-align: left;
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarLeft h2 {
+    font-size: 38px;
+    font-weight: 300;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebarCenter a {
+  text-decoration: none;
+  color: #b3b3b3;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 21.86px;
+}
+
+.sidebarCenter a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarCenter a {
+    font-size: 24px;
+  }
+}
+.sidebarRight {
+  width: 200px;
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebarRight {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebarRight {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarRight {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.sidebarRight p {
+  color: #b3b3b3;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarRight p {
+    font-size: 18px;
+  }
+}
+
+#menu-footer-menu-links {
+  display: flex;
+}
+
+#menu-footer-menu-links li {
+  margin-top: -10px;
+  margin-right: 15px;
+}
+@media screen and (max-width: 480px) {
+  #menu-footer-menu-links {
+    justify-content: flex-start;
+    margin-bottom: 50px;
+  }
+  #menu-footer-menu-links li {
+    margin-right: 50px;
+  }
+  #menu-footer-menu {
+    margin-bottom: 50px;
+  }
+}
+
+.github a,
+.linkedin a,
+.twitter a,
+.medium a {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 40px;
+  height: 30px;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: -10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .github a,
+  .linkedin a,
+  .twitter a,
+  .medium a {
+    width: 30px;
+  }
+}
+
+.github a {
+  background-image: url("./src/assets/img/github.svg");
+}
+
+.linkedin a {
+  background-image: url("./src/assets/img/linkedin-in.svg");
+}
+
+.twitter a {
+  background-image: url("./src/assets/img/twitter.svg");
+}
+
+.medium a {
+  background-image: url("./src/assets/img/medium.svg");
+}
+#vue-wordpress-app > .container {
+  padding: 0 15px;
+  max-width: 1430px;
+}
+
+.footer .container {
+  padding: 0 15px;
+  max-width: 1430px;
+}
+
+/* // 1400 1200 1024 768 640 480 */
